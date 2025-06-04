@@ -12,9 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-TRANSFORMATION_AGENT_PROMPT = """
-    You are a trasnformation agent. Your main job is to create a ....
-    1. a
-    2. b
-    3. c
+TRANSFORMATION_AGENT_PROMPT = """Given a JSON array of column mappings, recommend a list of data cleansing transformations for each column mapping. use the recommend_transformations tool
+    ** Data to Review:**
+    {classifier_agent_response}
 """

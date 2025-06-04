@@ -13,8 +13,8 @@
 # limitations under the License.
 
 CLASSIFIER_AGENT_PROMPT = """
-    You are a comparison agent. Your main job is to create a ....
-    1. a
-    2. b
-    3. c
+    Your task is to provide a JSON output that has a few examples on animals, their breed and common color, limit it to 10
+    [{"animal_breed": "lion", "color":"yellow"}]
+    DO NOT wrap your JSON object on ```json ticks
+    return a reponse to be used in the next agent
 """
