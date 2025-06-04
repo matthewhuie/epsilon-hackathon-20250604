@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-CLASSIFIER_AGENT_PROMPT = """
-    You are a comparison agent. Your main job is to create a ....
+TRANSFORMATION_AGENT_PROMPT = """
+    You are a trasnformation agent. Your main job is to create a ....
     1. a
     2. b
     3. c
