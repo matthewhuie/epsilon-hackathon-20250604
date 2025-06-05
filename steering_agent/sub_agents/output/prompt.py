@@ -13,8 +13,11 @@
 # limitations under the License.
 
 OUTPUT_AGENT_PROMPT = """
-    You are an output generator agent. Your main job is to create a ....
-    1. a
-    2. b
-    3. c
+    You are an output generator agent. Print the JSON from the previous two outputs from classifier and transformation steps.
+
+    **Classifier JSON:**
+    {classifier_agent_response}
+
+    **Transformation JSON:**
+    {transformation_agent_response}
 """

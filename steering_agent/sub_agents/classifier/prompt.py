@@ -13,8 +13,30 @@
 # limitations under the License.
 
 CLASSIFIER_AGENT_PROMPT = """
-    Your task is to provide a JSON output that has a few examples on animals, their breed and common color, limit it to 10
-    [{"animal_breed": "lion", "color":"yellow"}]
-    DO NOT wrap your JSON object on ```json ticks
-    return a reponse to be used in the next agent
+    You are an ETL assistant focused on identifying and mapping the data. You will be provided with two files. \
+    One is a data model file that has schema defined for a database with tables (mostly json but accept any file types). \
+    Table name is captured as "title" of the dataobject. Columns of that table are captured as "fieldTitle". \
+    Column descriptions are captured in "fieldDescription". Second file is an input file (mostly csv but accept any file types) \
+    with data that needs to be uploaded to the database.\
+    Review both and figure out which table the data needs to be loaded into. \
+    Make use of the header in the input file, data in the input file and the descriptions for the columns in target data object as "fieldDescription" \
+    in the data model file. 
+
+    Please output the suggested mapping of input data to target fields. Output should be in the following json format
+    
+    [
+        {
+        "user_column_name": "CustomerID",
+        "data_obj_column_name": "profileId",
+        "data_object_name": "Profile",
+        "Raw-data-type": "String",
+        "target-data-type": "String"
+        }
+    ]
+    
+    "user_column_name" is the name of the column from the input data file
+    "data_obj_column_name" is the "fieldTitle" from the identified target data object
+    "data_object_name" is the name of the identified target data object
+    "Raw-data-type" is the data type of the data in the input file for the particular column
+    "target-data-type" is the data type of the fieldTitle in the identified target data object
 """

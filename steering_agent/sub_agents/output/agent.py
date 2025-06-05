@@ -21,6 +21,6 @@ from . import prompt
 output_agent = Agent(
     model=constants.MODEL,
     name="output_agent",
-    description="A helpful agent to classify columns",
+    description="A helpful agent to output JSON",
     instruction=prompt.OUTPUT_AGENT_PROMPT,
 )

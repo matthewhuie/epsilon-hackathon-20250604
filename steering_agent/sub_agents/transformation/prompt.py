@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-TRANSFORMATION_AGENT_PROMPT = """Given a JSON array of column mappings, recommend a list of data cleansing transformations for each column mapping. use the recommend_transformations tool
-    ** Data to Review:**
+TRANSFORMATION_AGENT_PROMPT = """Ignore other input data.  Given the below JSON array of column mappings, recommend transformations for each column mapping.
+    
+    **JSON array of column mappings:**
     {classifier_agent_response}
 """

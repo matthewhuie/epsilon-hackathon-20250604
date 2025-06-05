@@ -5,22 +5,16 @@ from zoneinfo import ZoneInfo
 from google.adk.agents import Agent
 import json
 
-
-
 def recommend_transformations(input_data: str) -> dict:
-    """Recommend transformations for a list of column mappings
+    """Recommend transformations for a list of column mappings in JSON
 
     Args:
-        input_data (str): The input data, containing column mappings
+        input_data (str): The input JSON, passed from the classifier agent, containing column mappings
 
     Returns:
         dict: JSON array of recommend transformation per column mapping
     """
-          
-    # input_data = open('./steering_agent/files/test_data.json', 'r', encoding='UTF-8').read(-1)
-    print("!!!!!! im here !!!!!")
-    print(input_data)
-
+    
     if input_data is not None:
         json_data = json.loads(input_data)
 
@@ -86,5 +80,5 @@ transformation_agent = Agent(
     ),
     instruction=prompt.TRANSFORMATION_AGENT_PROMPT,
     tools=[recommend_transformations],
-    output_key="transformation_agent_response" # Stores output in state['generated_code']
+    output_key="transformation_agent_response"
 )
