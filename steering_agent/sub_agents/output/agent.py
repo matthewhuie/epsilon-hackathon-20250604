@@ -38,15 +38,18 @@ def save_json_to_file(input_data: str) -> dict:
         if not os.path.exists(DEFAULT_DIRECTORY):
             os.makedirs(DEFAULT_DIRECTORY, exist_ok=True) # Create directory if it doesn't exist
 
-        with open(file_path, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=4, ensure_ascii=False)
+        open(file_path, 'w', encoding='utf-8').write(input_data)
         
         return {
             "status": "success",
             "message": "Successfully saved JSON data to" + file_path
         }
-
+    except TypeError as e:
+        print(f"Error: The provided data is not JSON serializable. Details: {e}")
+    except IOError as e:
+        print(f"Error: Could not write to file '{file_path}'. Details: {e}")
     except Exception as e:
+        print(f"An unexpected error occurred: {e}")
         return {
             "status": "error",
             "message": "Error saving JSON data to a local file",

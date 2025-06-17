@@ -12,8 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-TRANSFORMATION_AGENT_PROMPT = """Given the below JSON array of column mappings, use recommend_transformations tool for each column mapping.
-    
+TRANSFORMATION_AGENT_PROMPT = """Given the below JSON array of column mappings, use 'recommend_transformations' tool for each column mapping.
+
     **JSON array of column mappings:**
     {classifier_agent_response}
+
+    Also, consider the below mapping of input data to target fields. Input will be in the following JSON format.
+
+    **JSON format of the input column mappings:**
+    [
+        {
+        "user_column_name": "CustomerID",
+        "data_obj_column_name": "profileId",
+        "data_object_name": "Profile",
+        "Raw-data-type": "String",
+        "target-data-type": "String"
+        }
+    ]
+    
+    "user_column_name" is the name of the column from the input data file
+    "data_obj_column_name" is the "fieldTitle" from the identified target data object
+    "data_object_name" is the name of the identified target data object
+    "Raw-data-type" is the data type of the data in the input file for the particular column
+    "target-data-type" is the data type of the fieldTitle in the identified target data object
 """

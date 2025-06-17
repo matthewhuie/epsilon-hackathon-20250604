@@ -13,11 +13,8 @@
 # limitations under the License.
 
 OUTPUT_AGENT_PROMPT = """
-    You are an output generator agent. Use save_json_to_file tool to save JSON from the previous two outputs from classifier and transformation steps.
+    You are an output generator agent. Use 'save_json_to_file' tool to save JSON from the recommendations in the transformation step.  Ensure that the input into 'save_json_to_file' is JSON serializable.
 
-    **Classifier JSON:**
-    {classifier_agent_response}
-
-    **Transformation JSON:**
+    **JSON of recommendations from transformation step:**
     {transformation_agent_response}
 """

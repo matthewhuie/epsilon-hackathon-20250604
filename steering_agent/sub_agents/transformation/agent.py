@@ -12,14 +12,13 @@ def recommend_transformations(input_data: str) -> dict:
         input_data (str): The input JSON, passed from the classifier agent, containing column mappings
 
     Returns:
-        dict: JSON array of recommend transformation per column mapping
+        dict: JSON array of original JSON with recommended_transforms per column mapping
     """
     
     if input_data is not None:
         json_data = json.loads(input_data)
 
         for column_mapping in json_data:
-            print(column_mapping)
             reco_xforms = []
             # if source is a string, let's recommend string cleansings
             if column_mapping.get('Raw-data-type', '').lower() == 'string':
@@ -60,7 +59,6 @@ def recommend_transformations(input_data: str) -> dict:
 
             column_mapping['recommended_transforms'] = reco_xforms
 
-        open('transformation_agent_output.json', 'w', encoding='UTF-8').write(json.dumps(json_data))
         return {
             "status": "success",
             "recommendations": json_data
@@ -75,9 +73,7 @@ def recommend_transformations(input_data: str) -> dict:
 transformation_agent = Agent(
     name="transformation_agent",
     model=constants.MODEL,
-    description=(
-        "Agent to recommend transformations for a given array of column mappings."
-    ),
+    description="Agent to recommend transformations for a given array of column mappings",
     instruction=prompt.TRANSFORMATION_AGENT_PROMPT,
     tools=[recommend_transformations],
     output_key="transformation_agent_response"
