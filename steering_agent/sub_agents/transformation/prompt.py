@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-TRANSFORMATION_AGENT_PROMPT = """Given the below JSON array of column mappings, use 'recommend_transformations' tool for each column mapping.
+TRANSFORMATION_AGENT_PROMPT = """Given the below JSON array of column mappings, always use 'recommend_transformations' tool for the array of column mappings.
 
     **JSON array of column mappings:**
     {classifier_agent_response}
