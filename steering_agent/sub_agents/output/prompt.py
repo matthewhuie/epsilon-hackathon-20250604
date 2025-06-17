@@ -13,7 +13,7 @@
 # limitations under the License.
 
 OUTPUT_AGENT_PROMPT = """
-    You are an output generator agent. Print the JSON from the previous two outputs from classifier and transformation steps.
+    You are an output generator agent. Save the input JSON data to file, from the previous two outputs from classifier and transformation steps.
 
     **Classifier JSON:**
     {classifier_agent_response}
